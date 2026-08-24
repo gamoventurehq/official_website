@@ -14,6 +14,8 @@ const capabilities = [
       "Interactive Menus, Catalogs & Portfolios",
       "Zero-Lag Cloud Performance",
     ],
+    deepDive:
+      "Every flagship is hand-crafted with sub-second page loads, custom micro-interactions, and search-optimized schema markup that guarantees premier placement in local maps and organic results.",
   },
   {
     num: "02",
@@ -25,6 +27,8 @@ const capabilities = [
       "Automated SMS & Email Confirmation Sequences",
       "Direct Calendar & CRM Syncing",
     ],
+    deepDive:
+      "Direct calendar integration syncs with your staff's existing workflow without third-party commission deductions or double-booking errors.",
   },
   {
     num: "03",
@@ -36,6 +40,8 @@ const capabilities = [
       "Influencer & Creator Media Kits",
       "Art Direction & Visual Asset Libraries",
     ],
+    deepDive:
+      "We provide comprehensive brand books, typography guidelines, and scalable vector suites so your brand looks impeccable across print, social, and web.",
   },
   {
     num: "04",
@@ -47,6 +53,8 @@ const capabilities = [
       "Reputation & Google Review Growth Systems",
       "Schema Markup & Local Citations",
     ],
+    deepDive:
+      "Local schema injection and Google Business Profile harmonization drive steady, compounding organic customer inquiries every month.",
   },
 ];
 
@@ -69,7 +77,11 @@ const protocolSteps = [
 ];
 
 export function CapabilitiesSection() {
-  const [activeTab, setActiveTab] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (idx: number) => {
+    setExpandedIndex(expandedIndex === idx ? null : idx);
+  };
 
   return (
     <section className="capabilities-section-hybrid section-pad" id="advisory">
@@ -100,34 +112,74 @@ export function CapabilitiesSection() {
 
           {/* Right Scrolling Capability Cards */}
           <div>
-            {capabilities.map((cap, idx) => (
-              <article
-                className="capability-card-tech"
-                key={cap.num}
-                onClick={() => setActiveTab(activeTab === idx ? null : idx)}
-                style={{ cursor: "pointer" }}
-              >
-                <div className="capability-header-row">
-                  <span className="capability-num-gold">{cap.num}</span>
-                  <h3>{cap.title}</h3>
-                </div>
-                <p>{cap.desc}</p>
-                <div className="deliverable-pills-row">
-                  {cap.deliverables.map((item) => (
-                    <span className="deliverable-pill" key={item}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
+            {capabilities.map((cap, idx) => {
+              const isExpanded = expandedIndex === idx;
+              return (
+                <article
+                  className="capability-card-tech"
+                  key={cap.num}
+                  style={{
+                    border: isExpanded ? "1px solid var(--border-gold)" : undefined,
+                    background: isExpanded ? "var(--surface-card-elevated)" : undefined,
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleExpand(idx)}
+                    aria-expanded={isExpanded}
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      padding: 0,
+                      textAlign: "left",
+                      width: "100%",
+                      cursor: "pointer",
+                      color: "inherit",
+                    }}
+                  >
+                    <div className="capability-header-row">
+                      <span className="capability-num-gold">{cap.num}</span>
+                      <h3 style={{ margin: 0 }}>{cap.title}</h3>
+                    </div>
+                  </button>
+
+                  <p style={{ marginTop: "14px" }}>{cap.desc}</p>
+
+                  <div className="deliverable-pills-row">
+                    {cap.deliverables.map((item) => (
+                      <span className="deliverable-pill" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  {isExpanded && (
+                    <div
+                      style={{
+                        marginTop: "18px",
+                        paddingTop: "16px",
+                        borderTop: "1px dashed var(--border-hairline-bright)",
+                        fontSize: "13px",
+                        color: "var(--accent-gold)",
+                        lineHeight: "1.6",
+                      }}
+                    >
+                      <strong style={{ display: "block", marginBottom: "4px", color: "var(--text-light)" }}>
+                        Architectural Deep-Dive:
+                      </strong>
+                      {cap.deepDive}
+                    </div>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </div>
 
         {/* The 3-Step Engagement Protocol Section */}
         <div style={{ marginTop: "100px", borderTop: "1px solid var(--border-hairline)", paddingTop: "70px" }} id="protocol">
           <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <div className="kicker-gold" style={{ justifyContent: "center" }}>
+            <div className="kicker-gold" style={{ justifyContent: "center", marginBottom: "14px" }}>
               <span aria-hidden="true" />
               The Engagement Protocol
               <span aria-hidden="true" />
@@ -136,12 +188,18 @@ export function CapabilitiesSection() {
               style={{
                 fontFamily: "var(--font-serif)",
                 fontSize: "clamp(26px, 3.2vw, 42px)",
-                margin: "0",
+                margin: "0 0 14px",
                 color: "var(--text-light)",
               }}
             >
               A disciplined, three-stage advisory process.
             </h3>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(203,178,106,0.1)", border: "1px solid var(--border-gold)", padding: "6px 16px", borderRadius: "9999px" }}>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent-gold)" }} />
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--accent-gold)", fontWeight: 600 }}>
+                Typical Engagement: 2–4 Weeks · Direct Founder Delivery
+              </span>
+            </div>
           </div>
 
           <div

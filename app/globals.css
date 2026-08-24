@@ -33,11 +33,11 @@
   --surface-salmon-peach: #fcd0b1;
   --ink-broadsheet: #33302e;
 
-  /* Text Tier (Inngest High-Contrast Palette) */
+  /* Text Hierarchy */
   --text-light: #f6f6f6;
-  --text-mid: #d6d3d1;
   --text-warm: #a89984;
-  --text-dim: #78716c;
+  --text-muted: #85796c;
+  --text-dim: #a8a29e;
 
   /* Inngest Hairline-as-Elevation Borders */
   --border-hairline: rgba(229, 231, 235, 0.09);

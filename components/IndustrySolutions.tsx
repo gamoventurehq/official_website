@@ -115,6 +115,13 @@ const sectors: SectorData[] = [
 
 export function IndustrySolutions() {
   const [activeTab, setActiveTab] = useState<string>("hospitality");
+  
+  // Interactive sandbox states inside mockup
+  const [restaurantSubOption, setRestaurantSubOption] = useState<"tasting" | "sommelier">("tasting");
+  const [clinicTreatment, setClinicTreatment] = useState<"aesthetics" | "consult">("aesthetics");
+  const [financeCycle, setFinanceCycle] = useState<"q3" | "q4">("q3");
+  const [creatorTier, setCreatorTier] = useState<"enterprise" | "campaign">("enterprise");
+
   const current = sectors.find((s) => s.id === activeTab) || sectors[0];
 
   return (
@@ -146,6 +153,7 @@ export function IndustrySolutions() {
           paddingBottom: "14px",
           marginBottom: "32px",
           borderBottom: "1px solid var(--border-hairline)",
+          maskImage: "linear-gradient(to right, black 92%, transparent 100%)",
         }}
       >
         {sectors.map((sector) => {
@@ -168,7 +176,7 @@ export function IndustrySolutions() {
                 fontSize: "13px",
                 fontWeight: 600,
                 cursor: "pointer",
-                transition: "all 0.25s ease",
+                transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
                 whiteSpace: "nowrap",
               }}
             >
@@ -188,7 +196,7 @@ export function IndustrySolutions() {
           background: "var(--surface-card)",
           border: "1px solid var(--border-hairline)",
           borderRadius: "20px",
-          padding: " clamp(28px, 4vw, 50px)",
+          padding: "clamp(28px, 4vw, 50px)",
           boxShadow: "var(--shadow-card)",
         }}
       >
@@ -272,7 +280,7 @@ export function IndustrySolutions() {
           </div>
         </div>
 
-        {/* Right Column: Live Visual UI Mockup Card */}
+        {/* Right Column: Live Visual UI Sandbox Mockup Card */}
         <div
           style={{
             background: "linear-gradient(145deg, #141210 0%, #0c0a09 100%)",
@@ -319,13 +327,13 @@ export function IndustrySolutions() {
               }}
             >
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ff477e" }} />
-              Live Deployment
+              Live Interactive Sandbox
             </span>
           </div>
 
-          {/* Sector Specific Visual Artifact */}
+          {/* Sector Specific Visual Artifact with Interactive Toggles */}
           {current.uiType === "restaurant" && (
-            <div style={{ padding: "14px 0" }}>
+            <div style={{ padding: "10px 0" }}>
               <div
                 style={{
                   background: "#1c1917",
@@ -337,27 +345,64 @@ export function IndustrySolutions() {
               >
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "12px" }}>
                   <span style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-light)" }}>
-                    Reserve Table for Tonight
+                    Table Reservation Engine
                   </span>
                   <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--accent-gold)" }}>
-                    2 Guests · 8:00 PM
+                    Tonight · 2 Guests · 8:00 PM
                   </span>
                 </div>
-                <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
-                  <span style={{ background: "rgba(203,178,106,0.15)", color: "var(--accent-gold)", padding: "4px 10px", borderRadius: "6px", fontSize: "11px", fontFamily: "var(--font-mono)" }}>
+
+                {/* Interactive Mode Switcher */}
+                <div style={{ display: "flex", gap: "8px", marginBottom: "14px" }}>
+                  <button
+                    type="button"
+                    onClick={() => setRestaurantSubOption("tasting")}
+                    style={{
+                      background: restaurantSubOption === "tasting" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: restaurantSubOption === "tasting" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: restaurantSubOption === "tasting" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "6px 12px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                    }}
+                  >
                     Chef Tasting Menu
-                  </span>
-                  <span style={{ background: "rgba(255,255,255,0.05)", color: "var(--text-warm)", padding: "4px 10px", borderRadius: "6px", fontSize: "11px", fontFamily: "var(--font-mono)" }}>
-                    Sommelier Pairing
-                  </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRestaurantSubOption("sommelier")}
+                    style={{
+                      background: restaurantSubOption === "sommelier" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: restaurantSubOption === "sommelier" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: restaurantSubOption === "sommelier" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "6px 12px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                    }}
+                  >
+                    Sommelier Wine Pairing
+                  </button>
                 </div>
+
+                <p style={{ margin: "0 0 10px", fontSize: "12px", color: "var(--text-light)" }}>
+                  {restaurantSubOption === "tasting"
+                    ? "✨ 7-Course Seasonal Tuscan Truffle & Dry-Aged Wagyu"
+                    : "🍷 2018 Barolo Riserva & Super Tuscan Reserve Curated by Head Sommelier"}
+                </p>
+
                 <div style={{ height: "4px", background: "var(--accent-gold)", borderRadius: "2px", width: "100%" }} />
               </div>
             </div>
           )}
 
           {current.uiType === "clinic" && (
-            <div style={{ padding: "14px 0" }}>
+            <div style={{ padding: "10px 0" }}>
               <div
                 style={{
                   background: "#1c1917",
@@ -370,14 +415,49 @@ export function IndustrySolutions() {
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
                   <ShieldCheckIcon />
                   <span style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-light)" }}>
-                    Dr. Alistair Vance · Specialist Intake
+                    Specialist Patient Intake Funnel
                   </span>
                 </div>
-                <p style={{ margin: "0 0 10px", fontSize: "12px", color: "var(--text-warm)" }}>
-                  Select consultation pathway & submit medical history:
-                </p>
+
+                <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+                  <button
+                    type="button"
+                    onClick={() => setClinicTreatment("aesthetics")}
+                    style={{
+                      background: clinicTreatment === "aesthetics" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: clinicTreatment === "aesthetics" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: clinicTreatment === "aesthetics" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "6px 10px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Facial Aesthetics
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setClinicTreatment("consult")}
+                    style={{
+                      background: clinicTreatment === "consult" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: clinicTreatment === "consult" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: clinicTreatment === "consult" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "6px 10px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Specialist Consultation
+                  </button>
+                </div>
+
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(255,255,255,0.04)", padding: "8px 12px", borderRadius: "6px" }}>
-                  <span style={{ fontSize: "12px", color: "var(--text-light)" }}>Next Available Slot</span>
+                  <span style={{ fontSize: "12px", color: "var(--text-light)" }}>
+                    {clinicTreatment === "aesthetics" ? "Dr. Vance · Aesthetics Consult" : "Dr. Vance · Comprehensive Diagnostic"}
+                  </span>
                   <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--accent-gold)" }}>Tomorrow, 10:30 AM</span>
                 </div>
               </div>
@@ -385,7 +465,7 @@ export function IndustrySolutions() {
           )}
 
           {current.uiType === "finance" && (
-            <div style={{ padding: "14px 0" }}>
+            <div style={{ padding: "10px 0" }}>
               <div
                 style={{
                   background: "#1c1917",
@@ -403,14 +483,52 @@ export function IndustrySolutions() {
                     SECURE 256-BIT
                   </span>
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginTop: "10px" }}>
+
+                <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+                  <button
+                    type="button"
+                    onClick={() => setFinanceCycle("q3")}
+                    style={{
+                      background: financeCycle === "q3" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: financeCycle === "q3" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: financeCycle === "q3" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "4px 10px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Q3 Corporate Audit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFinanceCycle("q4")}
+                    style={{
+                      background: financeCycle === "q4" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: financeCycle === "q4" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: financeCycle === "q4" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "4px 10px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    HNW Wealth Retainer
+                  </button>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
                   <div style={{ background: "rgba(255,255,255,0.04)", padding: "8px", borderRadius: "6px" }}>
-                    <small style={{ display: "block", fontSize: "10px", color: "var(--text-warm)" }}>Audit Cycle</small>
-                    <strong style={{ fontSize: "12px", color: "var(--text-light)" }}>Q3 Finalized</strong>
+                    <small style={{ display: "block", fontSize: "10px", color: "var(--text-warm)" }}>Status</small>
+                    <strong style={{ fontSize: "12px", color: "var(--text-light)" }}>
+                      {financeCycle === "q3" ? "Audit Finalized" : "Advisory Active"}
+                    </strong>
                   </div>
                   <div style={{ background: "rgba(255,255,255,0.04)", padding: "8px", borderRadius: "6px" }}>
-                    <small style={{ display: "block", fontSize: "10px", color: "var(--text-warm)" }}>Tax Filing</small>
-                    <strong style={{ fontSize: "12px", color: "var(--accent-gold)" }}>Optimized (0 Error)</strong>
+                    <small style={{ display: "block", fontSize: "10px", color: "var(--text-warm)" }}>Optimization</small>
+                    <strong style={{ fontSize: "12px", color: "var(--accent-gold)" }}>0 Error Tolerance</strong>
                   </div>
                 </div>
               </div>
@@ -418,7 +536,7 @@ export function IndustrySolutions() {
           )}
 
           {current.uiType === "creator" && (
-            <div style={{ padding: "14px 0" }}>
+            <div style={{ padding: "10px 0" }}>
               <div
                 style={{
                   background: "#1c1917",
@@ -430,15 +548,55 @@ export function IndustrySolutions() {
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
                   <span style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-light)" }}>
-                    Official Media Kit 2026
+                    Dynamic Media Kit 2026
                   </span>
                   <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "#ff477e" }}>
                     850K+ Monthly Reach
                   </span>
                 </div>
+
+                <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+                  <button
+                    type="button"
+                    onClick={() => setCreatorTier("enterprise")}
+                    style={{
+                      background: creatorTier === "enterprise" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: creatorTier === "enterprise" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: creatorTier === "enterprise" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "4px 10px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Enterprise Sponsorship
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCreatorTier("campaign")}
+                    style={{
+                      background: creatorTier === "campaign" ? "rgba(203,178,106,0.2)" : "rgba(255,255,255,0.05)",
+                      color: creatorTier === "campaign" ? "var(--accent-gold)" : "var(--text-warm)",
+                      border: creatorTier === "campaign" ? "1px solid var(--border-gold)" : "1px solid transparent",
+                      padding: "4px 10px",
+                      borderRadius: "6px",
+                      fontSize: "11px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Omnichannel Launch
+                  </button>
+                </div>
+
                 <div style={{ display: "flex", justifyContent: "space-between", background: "rgba(255,255,255,0.04)", padding: "8px 12px", borderRadius: "6px" }}>
-                  <span style={{ fontSize: "12px", color: "var(--text-warm)" }}>Avg. Brand Deal ROI</span>
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--accent-gold)", fontWeight: 700 }}>4.8× Yield</span>
+                  <span style={{ fontSize: "12px", color: "var(--text-warm)" }}>
+                    {creatorTier === "enterprise" ? "Quarterly Retainer ROI" : "Launch Conversion ROI"}
+                  </span>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--accent-gold)", fontWeight: 700 }}>
+                    {creatorTier === "enterprise" ? "4.8× Yield" : "6.2× Yield"}
+                  </span>
                 </div>
               </div>
             </div>
