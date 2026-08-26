@@ -1,41 +1,24 @@
 import Image from "next/image";
+import Link from "next/link";
+import { contact } from "./siteContent";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="gamoventure-footer">
-      <div className="shell">
-        <div className="footer-main-row">
-          <div className="footer-brand-wrap">
-            <Image
-              src="/logos/gamoventure_logo_without_background_without_plate.png"
-              alt="Gamoventure Official Logo"
-              width={160}
-              height={40}
-              className="footer-logo-img"
-            />
-          </div>
-
-          <div className="footer-nav-links">
-            <a href="#solutions">Industry Solutions</a>
-            <a href="#flagships">Visual Flagships</a>
-            <a href="#advisory">Advisory Services</a>
-            <a href="#protocol">Engagement Protocol</a>
-            <a href="#endorsements">Endorsements</a>
-            <a href="#contact">Private Channel</a>
-          </div>
+    <footer className="site-footer">
+      <div className="page-shell footer-primary">
+        <div>
+          <Link className="wordmark footer-wordmark" href="/" aria-label="Gamoventure home">
+            <Image src="/logos/symbol.png" alt="" width={38} height={38} />
+            <span className="brand-wordmark">Gamoventure</span>
+          </Link>
+          <p>Purpose-built technology for ambitious businesses.</p>
         </div>
-
-        <div className="footer-bottom-row">
-          <p style={{ margin: 0 }}>
-            © {currentYear} Gamoventure Private Client Studio. Founded by Gaurav.
-          </p>
-          <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-            <span>Advisory for Hospitality, Clinics, CA & Creators</span>
-            <span>All rights reserved.</span>
-          </div>
-        </div>
+        <div className="footer-nav"><span>Explore</span><Link href="/capabilities">Capabilities</Link><Link href="/work">Work</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></div>
+        <div className="footer-nav"><span>Start a conversation</span><a href={`mailto:${contact.email}`}>{contact.email}</a><a href={contact.whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a><a href={`tel:${contact.phoneHref}`}>{contact.phoneDisplay}</a></div>
+      </div>
+      <div className="page-shell footer-legal">
+        <p>© {new Date().getFullYear()} Gamoventure. Independent digital product and solutions studio.</p>
+        <div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
       </div>
     </footer>
   );

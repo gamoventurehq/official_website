@@ -1,48 +1,55 @@
 import type { Metadata } from "next";
-import { Newsreader, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Geist, Megrim, Outfit } from "next/font/google";
 import "./globals.css";
 
-const serifFont = Newsreader({
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+const outfit = Outfit({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
-const sansFont = Plus_Jakarta_Sans({
+const megrim = Megrim({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sans",
+  weight: "400",
+  variable: "--font-megrim",
   display: "swap",
 });
 
-const monoFont = JetBrains_Mono({
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-mono",
+  variable: "--font-geist",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Gamoventure — Private Client Studio & Digital Flagships | Gaurav, Founder",
-  description:
-    "Bespoke digital flagships, automated reservation & patient intake architectures, and visual brand systems for premier restaurants, medical clinics, CA practices, and distinguished creators.",
-  icons: {
-    icon: "/logos/symbol.png",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Gamoventure — Digital Products & Business Systems",
+    template: "%s — Gamoventure",
+  },
+  description: "Gamoventure is an independent digital product and solutions studio building purpose-built technology for ambitious businesses.",
+  icons: { icon: "/logos/symbol.png" },
+  openGraph: {
+    title: "Gamoventure — Digital Products & Business Systems",
+    description: "Purpose-built digital experiences, operational systems, and software products for ambitious businesses.",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Gamoventure — Digital products that move businesses forward." }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Gamoventure — Digital Products & Business Systems",
+    description: "Purpose-built digital experiences, operational systems, and software products for ambitious businesses.",
+    images: ["/og.png"],
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${serifFont.variable} ${sansFont.variable} ${monoFont.variable} scroll-smooth`}
-    >
-      <body className="antialiased font-sans bg-[#1c1917] text-[#f6f6f6]">
-        {children}
-      </body>
+    <html lang="en" className={`${outfit.variable} ${megrim.variable} ${geist.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
-
-

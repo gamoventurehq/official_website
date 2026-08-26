@@ -1,6 +1,8 @@
-# Northstar Portfolio
+# Gamoventure Portfolio
 
-A polished, responsive company portfolio built with Next.js, React, and TypeScript. The fictional Northstar brand and project content are intended as clear placeholders for a real company.
+The official Gamoventure portfolio, built with Next.js, React, TypeScript, and GSAP.
+
+The site presents Gamoventure as an independent digital product and solutions studio. It includes dedicated pages for capabilities, selected work, the studio, contact, privacy, and terms, plus an honest in-progress Egg Express POS case study.
 
 ## Local development
 
@@ -9,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` in a browser.
+Set `NEXT_PUBLIC_SITE_URL` to the public website origin before deployment so social-share metadata uses the correct absolute URL. See `.env.example`.
 
 ## Validation
 
@@ -18,10 +20,3 @@ npm run typecheck
 npm run lint
 npm run build
 ```
-
-## Customization
-
-- Update brand, service, case-study, and contact content in `app/page.tsx`.
-- Adjust the design tokens at the top of `app/globals.css`.
-- Replace `public/images/northstar-studio-hero.png` with a company-specific hero visual.
-- Replace placeholder external links and the `mailto:` address before publishing.

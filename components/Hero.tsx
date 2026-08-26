@@ -1,88 +1,44 @@
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight } from "./icons";
+import Link from "next/link";
+import { SplashReplayButton } from "./SplashReplayButton";
 
 export function Hero() {
   return (
-    <section className="hero-executive shell" id="top">
-      <div className="hero-meta-badge">
-        <span>Gaurav · Founder & Principal Partner</span>
-      </div>
+    <section className="hero" id="top">
+      <div className="hero-ambient hero-ambient-one" aria-hidden="true" />
+      <div className="hero-ambient hero-ambient-two" aria-hidden="true" />
 
-      {/* 2-Line Strict Guarantee with Ultra-Wide container & Inline Symbol Badge */}
-      <h1 className="hero-headline-main">
-        Elevating distinguished{" "}
-        <span
-          className="hero-headline-logo-badge"
-          style={{
-            backgroundImage: "url('/logos/symbol.png')",
-          }}
-          aria-hidden="true"
-        />{" "}
-        local enterprises, clinics & <em>creators into market leaders.</em>
-      </h1>
+      <div className="page-shell hero-layout">
+        <div className="hero-copy">
+          <h1 className="max-w-hero hero-title">
+            We build digital products that move businesses forward.
+          </h1>
 
-      <div className="hero-layout-grid">
-        <div>
-          <p className="hero-body-paragraph">
-            I am the founder of Gamoventure. We partner with ambitious restaurants, medical clinics,
-            chartered accountancy firms, and high-growth creators to architect bespoke digital flagships,
-            automated booking engines, and visual identities that command market authority.
-          </p>
-
-          <div className="hero-action-cluster">
-            <a href="#flagships" className="btn-gold">
-              <span>Explore Visual Flagships</span>
-              <ArrowRight />
-            </a>
-            <a href="#contact" className="btn-navy-pill">
-              <span>Request Private Consultation</span>
-              <ArrowUpRight />
-            </a>
-          </div>
-        </div>
-
-        {/* Ambient Holographic Card with Gamoventure Brand Crest */}
-        <div className="hero-hologram-card">
-          <div className="hologram-glow-orbit" aria-hidden="true" />
-
-          <div className="hologram-logo-center">
-            <Image
-              src="/logos/logo_without_bg.png"
-              alt="Gamoventure Official Crest"
-              width={76}
-              height={76}
-              className="hologram-img-logo"
-              priority
-            />
-            <div className="hologram-title">
-              <h4>Gamoventure Studio</h4>
-              <p>Private Client Practice</p>
+          <div className="hero-support">
+            <p>
+              Gamoventure turns business challenges into purpose-built digital experiences,
+              operational systems, and software products.
+            </p>
+            <div className="hero-actions">
+              <Link className="button button-light" href="/contact">Discuss your project <span aria-hidden="true">↗</span></Link>
+              <Link className="button button-ghost" href="/work">Explore our work <span aria-hidden="true">↘</span></Link>
             </div>
           </div>
+        </div>
 
-          <div className="hologram-foot-stats">
-            <span>Specialization: Bespoke Digital Flagships</span>
-            <span>Focus: Hospitality · Clinics · CA · Creators</span>
+        <div className="hero-art" aria-label="Gamoventure emblem study">
+          <div className="hero-art-grid" aria-hidden="true" />
+          <div className="hero-art-halo" aria-hidden="true" />
+          <div className="hero-art-mark">
+            <Image
+              src="/logos/generated/symbol_full.png"
+              alt="Gamoventure emblem"
+              fill
+              sizes="(max-width: 760px) 90vw, 46vw"
+              priority
+            />
           </div>
-        </div>
-      </div>
-
-      {/* 3-Column Small-Caps JetBrains Mono Stat Strip */}
-      <div className="mono-stat-strip">
-        <div className="mono-stat-item">
-          <small>01 / CORE SECTORS SERVED</small>
-          <strong>Hospitality, Clinics & CA</strong>
-          <span>Tailored commercial architectures</span>
-        </div>
-        <div className="mono-stat-item">
-          <small>02 / CLIENT ACQUISITION</small>
-          <strong>+140% Inbound Surge</strong>
-          <span>Frictionless reservation & intake funnels</span>
-        </div>
-        <div className="mono-stat-item">
-          <small>03 / BESPOKE EXCELLENCE</small>
-          <strong>100% Custom Tailored</strong>
-          <span>Zero templates · Direct founder oversight</span>
+          <SplashReplayButton />
         </div>
       </div>
     </section>
