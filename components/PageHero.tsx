@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { FloatingPathsBackground } from "./FloatingPathsBackground";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -10,7 +11,7 @@ type PageHeroProps = {
 export function PageHero({ eyebrow, title, copy, aside }: PageHeroProps) {
   return (
     <section className="page-hero">
-      <div className="page-hero-ambient" aria-hidden="true" />
+      <FloatingPathsBackground />
       <div className="page-shell page-hero-layout">
         <div className="page-hero-copy">
           <p className="eyebrow">{eyebrow}</p>

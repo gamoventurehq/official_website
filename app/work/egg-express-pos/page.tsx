@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ContainerScrollShowcase } from "@/components/ContainerScrollShowcase";
 import { ContactCTA } from "@/components/ContactCTA";
+import { EggProductVisual } from "@/components/EggProductVisual";
 import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 
@@ -52,7 +53,7 @@ export default function EggExpressCaseStudyPage() {
       <section className="chapter case-product-chapter">
         <div className="page-shell case-product-layout">
           <div className="case-product-copy reveal-block"><p className="eyebrow">The product direction</p><h2>Local where operations happen. Connected where visibility helps.</h2></div>
-          <div className="case-product-detail reveal-block"><p>The operational system is browser-based and designed for a Windows outlet environment. A local PostgreSQL database remains authoritative, with a sanitized one-way cloud replica architecture planned for appropriate remote visibility.</p><Image src="/images/egg-express/pos-orders.jpg" alt="Egg Express POS service type and table selection workspace" width={821} height={776} /></div>
+          <div className="case-product-detail reveal-block"><p>The operational system is browser-based and designed for a Windows outlet environment. A local PostgreSQL database remains authoritative, with a sanitized one-way cloud replica architecture planned for appropriate remote visibility.</p><div className="case-product-snapshot"><EggProductVisual /></div></div>
         </div>
       </section>
 

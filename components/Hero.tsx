@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FloatingPathsBackground } from "./FloatingPathsBackground";
 import { SplashReplayButton } from "./SplashReplayButton";
 
 export function Hero() {
   return (
     <section className="hero" id="top">
-      <div className="hero-ambient hero-ambient-one" aria-hidden="true" />
-      <div className="hero-ambient hero-ambient-two" aria-hidden="true" />
+      <FloatingPathsBackground variant="hero" />
 
       <div className="page-shell hero-layout">
         <div className="hero-copy">

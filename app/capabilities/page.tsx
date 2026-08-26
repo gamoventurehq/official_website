@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { CapabilityAccordion } from "@/components/CapabilityAccordion";
 import { ContactCTA } from "@/components/ContactCTA";
 import { IndustryMarquee } from "@/components/IndustryMarquee";
 import { PageHero } from "@/components/PageHero";
@@ -20,12 +19,6 @@ export default function CapabilitiesPage() {
         copy="We help growing businesses define, build, launch, and continuously improve the digital products and systems they need to operate and grow."
         aside={<p>Bring us a defined project or an unresolved business problem. We will start by finding the right shape of the solution.</p>}
       />
-
-      <section className="chapter capability-detail-chapter">
-        <div className="page-shell">
-          <CapabilityAccordion />
-        </div>
-      </section>
 
       <section className="chapter capability-list-chapter">
         <div className="page-shell pin-layout capability-list-layout">
