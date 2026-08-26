@@ -55,7 +55,7 @@ export function ContainerScrollShowcase() {
         .fromTo(titleRef.current, { y: 40, opacity: 0.5 }, { y: 0, opacity: 1, ease: "none" }, 0)
         .fromTo(
           frameRef.current,
-          { y: 64, scale: 0.88, rotateX: 8, transformOrigin: "center top" },
+          { y: 36, scale: 0.96, rotateX: 3, transformOrigin: "center top" },
           { y: 0, scale: 1, rotateX: 0, ease: "none" },
           0,
         );

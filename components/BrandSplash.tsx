@@ -67,7 +67,7 @@ export function BrandSplash() {
       gsap.set(innerRef.current, { autoAlpha: 0, scale: 0.72, rotate: 7 });
       gsap.set(innerBloomRef.current, { autoAlpha: 0, scale: 0.8 });
       gsap.set(pulseRef.current, { autoAlpha: 0, scale: 0.65 });
-      gsap.set(wordmarkRef.current, { autoAlpha: 0, y: 34, letterSpacing: "0.28em" });
+      gsap.set(wordmarkRef.current, { autoAlpha: 0, xPercent: -50, y: 34, letterSpacing: "0.28em" });
       gsap.set(marqueeRef.current, { autoAlpha: 0 });
       gsap.set(emblemRef.current, { x: 0, y: 0, scale: 1, transformOrigin: "center center" });
 
@@ -124,11 +124,25 @@ export function BrandSplash() {
             if (!heroArt || !emblemRef.current) return 0;
             const source = emblemRef.current.getBoundingClientRect();
             const target = heroArt.getBoundingClientRect();
-            return target.top + target.height / 2 - (source.top + source.height / 2);
+            const targetScale = Math.min((target.width / source.width) * 0.78, window.innerWidth <= 620 ? 0.9 : 1.08);
+            const targetCenter = target.top + target.height / 2;
+            const sourceCenter = source.top + source.height / 2;
+
+            if (window.innerWidth > 620) return targetCenter - sourceCenter;
+
+            const transformedHalfHeight = source.height * targetScale / 2;
+            const safeTargetCenter = Math.min(
+              targetCenter,
+              window.innerHeight - transformedHalfHeight - 24,
+            );
+            return safeTargetCenter - sourceCenter;
           },
           scale: () => {
             if (!heroArt || !emblemRef.current) return 0.82;
-            return Math.min((heroArt.getBoundingClientRect().width / emblemRef.current.getBoundingClientRect().width) * 0.78, 1.08);
+            return Math.min(
+              (heroArt.getBoundingClientRect().width / emblemRef.current.getBoundingClientRect().width) * 0.78,
+              window.innerWidth <= 620 ? 0.9 : 1.08,
+            );
           },
           duration: 1.18,
           ease: "expo.inOut",
