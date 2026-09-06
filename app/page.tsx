@@ -57,12 +57,12 @@ export default function Home() {
         <section className="chapter selected-work">
           <div className="page-shell">
             <header className="chapter-heading reveal-block">
-              <p className="eyebrow">Selected work</p>
-              <h2>One real engagement, shown with the detail it deserves.</h2>
-              <p>Proof begins with honest scope, considered decisions, and visible progress—not inflated claims.</p>
+              <h2>Client focus: Egg Express.</h2>
+              <p>A closer look at our ongoing product engagement, from order handling to kitchen operations.</p>
             </header>
 
-            <article className="work-feature reveal-block">
+            <article className="work-feature work-feature--film reveal-block">
+              <div className="work-product-preview work-product-preview--cinema"><EggPromoVideo preview /></div>
               <div className="work-feature-media" data-visual-frame>
                 <Image src="/images/egg-express/outlet.webp" alt="Egg Express food outlet in Ulhasnagar" fill sizes="(max-width: 900px) 100vw, 48vw" />
                 <div className="work-feature-logo"><Image src="/images/egg-express/logo.webp" alt="Egg Express" width={132} height={110} /></div>
@@ -74,7 +74,6 @@ export default function Home() {
                 <ul><li>Order and table management</li><li>KOT and bill printing</li><li>Inventory and reporting</li></ul>
                 <Link className="text-link" href="/work/egg-express-pos">Explore the case study <i aria-hidden="true">↗</i></Link>
               </div>
-              <div className="work-product-preview"><EggPromoVideo preview /></div>
             </article>
           </div>
         </section>

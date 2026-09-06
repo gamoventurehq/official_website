@@ -7,14 +7,14 @@ import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 
 export const metadata: Metadata = {
-  title: "Egg Express POS — Selected Work",
+  title: "Egg Express POS — Client Focus",
   description: "An active Gamoventure engagement developing a local-first point-of-sale and kitchen operations system for Egg Express.",
   openGraph: {
-    title: "Egg Express POS — Selected Work",
+    title: "Egg Express POS — Client Focus",
     description: "A purpose-built, local-first restaurant operations system currently in development.",
     images: [],
   },
-  twitter: { card: "summary", title: "Egg Express POS — Selected Work", description: "A purpose-built, local-first restaurant operations system currently in development.", images: [] },
+  twitter: { card: "summary", title: "Egg Express POS — Client Focus", description: "A purpose-built, local-first restaurant operations system currently in development.", images: [] },
 };
 
 const capabilities = [
@@ -30,11 +30,21 @@ export default function EggExpressCaseStudyPage() {
   return (
     <SitePage>
       <PageHero
-        eyebrow="Egg Express · Ulhasnagar, Maharashtra"
+        eyebrow="Client focus · Egg Express"
         title={<>A local-first <span className="case-inline-brand"><Image src="/images/egg-express/logo.webp" alt="Egg Express" width={120} height={100} /></span> POS shaped around how the outlet actually operates.</>}
         copy="Gamoventure is developing a purpose-built point-of-sale and kitchen operations system designed to replace restrictive vendor software with an operation the business can control."
         aside={<div className="case-status"><p className="status-line"><span /> Active client engagement</p><strong>Currently in development</strong><small>Rollout, UAT, training, and formal acceptance remain ahead.</small></div>}
       />
+
+      <section className="chapter case-promo-chapter" aria-labelledby="pos-promo-title">
+        <div className="page-shell">
+          <header className="chapter-heading">
+            <h2 id="pos-promo-title">Inside Egg Express POS.</h2>
+            <p>A closer look at our ongoing product engagement, from order handling to kitchen operations.</p>
+          </header>
+          <EggPromoVideo preview />
+        </div>
+      </section>
 
       <section className="case-cover">
         <div className="case-cover-image" data-visual-frame><Image src="/images/egg-express/outlet.webp" alt="Egg Express outlet in Ulhasnagar, Maharashtra" fill priority sizes="100vw" /></div>
@@ -48,22 +58,12 @@ export default function EggExpressCaseStudyPage() {
         </div>
       </section>
 
-      <section className="chapter case-promo-chapter" aria-labelledby="pos-promo-title">
-        <div className="page-shell">
-          <header className="chapter-heading">
-            <p className="eyebrow">Egg Express POS</p>
-            <h2 id="pos-promo-title">Watch the product in action.</h2>
-          </header>
-          <EggPromoVideo />
-        </div>
-      </section>
-
       <ContainerScrollShowcase />
 
       <section className="chapter case-product-chapter">
         <div className="page-shell case-product-layout">
           <div className="case-product-copy reveal-block"><p className="eyebrow">The product direction</p><h2>Local where operations happen. Connected where visibility helps.</h2></div>
-          <div className="case-product-detail reveal-block"><p>The operational system is browser-based and designed for a Windows outlet environment. A local PostgreSQL database remains authoritative, with a sanitized one-way cloud replica architecture planned for appropriate remote visibility.</p><a className="case-pos-photo" href="/images/egg-express/pos-orders.jpg" target="_blank" rel="noreferrer"><Image src="/images/egg-express/pos-orders.jpg" alt="Egg Express POS service selection and table management. Open full-size screenshot." width={1280} height={720} sizes="(max-width: 900px) 100vw, 60vw" /></a></div>
+          <div className="case-product-detail reveal-block"><p>The operational system is browser-based and designed for a Windows outlet environment. A local PostgreSQL database remains authoritative, with a sanitized one-way cloud replica architecture planned for appropriate remote visibility.</p><a className="case-pos-photo" href="/images/egg-express/showcase/tables.png" target="_blank" rel="noreferrer"><Image src="/images/egg-express/showcase/tables.png" alt="Egg Express POS service selection and table management. Open full-size screenshot." width={2560} height={1600} sizes="(max-width: 900px) 100vw, 60vw" /></a></div>
         </div>
       </section>
 

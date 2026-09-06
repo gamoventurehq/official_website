@@ -85,8 +85,8 @@ export function ContainerScrollShowcase() {
               <span>Order workspace · Development build</span>
               <div className="container-scroll-controls" aria-hidden="true"><i /><i /><i /></div>
             </div>
-            <a className="container-scroll-screen case-pos-photo" href="/images/egg-express/pos-menu.jpg" target="_blank" rel="noreferrer">
-              <Image src="/images/egg-express/pos-menu.jpg" alt="Egg Express POS menu and order workspace. Open full-size screenshot." width={1280} height={720} sizes="(max-width: 900px) 100vw, 1240px" />
+            <a className="container-scroll-screen case-pos-photo" href="/images/egg-express/showcase/menu.png" target="_blank" rel="noreferrer">
+              <Image src="/images/egg-express/showcase/menu.png" alt="Egg Express POS photo menu and order workspace. Open full-size screenshot." width={2560} height={1600} sizes="(max-width: 900px) 100vw, 1240px" />
             </a>
           </div>
         </div>
