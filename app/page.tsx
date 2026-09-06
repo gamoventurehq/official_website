@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BrandSplash } from "@/components/BrandSplash";
 import { ContactCTA } from "@/components/ContactCTA";
-import { EggProductVisual } from "@/components/EggProductVisual";
+import { EggPromoVideo } from "@/components/EggPromoVideo";
 import { Hero } from "@/components/Hero";
 import { IndustryMarquee } from "@/components/IndustryMarquee";
 import { SitePage } from "@/components/SitePage";
@@ -62,7 +62,7 @@ export default function Home() {
               <p>Proof begins with honest scope, considered decisions, and visible progress—not inflated claims.</p>
             </header>
 
-            <Link className="work-feature reveal-block" href="/work/egg-express-pos">
+            <article className="work-feature reveal-block">
               <div className="work-feature-media" data-visual-frame>
                 <Image src="/images/egg-express/outlet.webp" alt="Egg Express food outlet in Ulhasnagar" fill sizes="(max-width: 900px) 100vw, 48vw" />
                 <div className="work-feature-logo"><Image src="/images/egg-express/logo.webp" alt="Egg Express" width={132} height={110} /></div>
@@ -72,10 +72,10 @@ export default function Home() {
                 <h3>Egg Express POS</h3>
                 <p>A purpose-built, local-first point-of-sale and kitchen operations system for a food outlet in Ulhasnagar, Maharashtra.</p>
                 <ul><li>Order and table management</li><li>KOT and bill printing</li><li>Inventory and reporting</li></ul>
-                <span className="text-link">Explore the case study <i aria-hidden="true">↗</i></span>
+                <Link className="text-link" href="/work/egg-express-pos">Explore the case study <i aria-hidden="true">↗</i></Link>
               </div>
-              <div className="work-product-preview"><EggProductVisual /></div>
-            </Link>
+              <div className="work-product-preview"><EggPromoVideo preview /></div>
+            </article>
           </div>
         </section>
 

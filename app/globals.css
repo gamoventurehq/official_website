@@ -1618,6 +1618,44 @@ h2 {
 a:hover .text-link i { transform: translate(4px, -4px); }
 .work-product-preview { grid-column: 1 / -1; padding: clamp(34px, 7vw, 90px); overflow: hidden; background: var(--mineral); }
 
+.egg-promo {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid rgba(255, 150, 102, 0.3);
+  color: var(--paper);
+  background: #0d0c0b;
+}
+
+.egg-promo-heading,
+.egg-promo-caption {
+  display: flex;
+  padding: 20px 24px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+}
+
+.egg-promo-heading { border-bottom: 1px solid var(--line-dark); }
+.egg-promo-heading .brand-wordmark { font-size: 1.1rem; }
+.egg-promo-heading > span:last-child,
+.egg-promo-caption { font-size: .8rem; color: var(--stone); }
+.egg-promo-caption { border-top: 1px solid var(--line-dark); }
+.egg-promo-caption > span:first-child { color: var(--paper); }
+.egg-promo-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #000; }
+.egg-promo-video:focus-visible,
+.case-pos-photo:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 4px; }
+.case-promo-chapter { background: var(--ink); }
+.case-pos-photo { display: block; overflow: hidden; cursor: zoom-in; }
+.case-pos-photo img { display: block; width: 100%; height: auto; transition: filter 300ms ease; }
+.case-pos-photo:hover img { filter: brightness(1.06); }
+.container-scroll-screen.case-pos-photo { aspect-ratio: 16 / 9; }
+
+@media (max-width: 620px) {
+  .egg-promo-heading, .egg-promo-caption { padding: 16px; gap: 8px; }
+  .egg-promo-heading > span:last-child, .egg-promo-caption { font-size: .72rem; }
+}
+
 .egg-pos-ui {
   --pos-yellow: #fcd535;
   --pos-yellow-deep: #f0b90b;

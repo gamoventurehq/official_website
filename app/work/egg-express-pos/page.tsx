@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ContainerScrollShowcase } from "@/components/ContainerScrollShowcase";
 import { ContactCTA } from "@/components/ContactCTA";
-import { EggProductVisual } from "@/components/EggProductVisual";
+import { EggPromoVideo } from "@/components/EggPromoVideo";
 import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 
@@ -48,12 +48,22 @@ export default function EggExpressCaseStudyPage() {
         </div>
       </section>
 
+      <section className="chapter case-promo-chapter" aria-labelledby="pos-promo-title">
+        <div className="page-shell">
+          <header className="chapter-heading">
+            <p className="eyebrow">Egg Express POS</p>
+            <h2 id="pos-promo-title">Watch the product in action.</h2>
+          </header>
+          <EggPromoVideo />
+        </div>
+      </section>
+
       <ContainerScrollShowcase />
 
       <section className="chapter case-product-chapter">
         <div className="page-shell case-product-layout">
           <div className="case-product-copy reveal-block"><p className="eyebrow">The product direction</p><h2>Local where operations happen. Connected where visibility helps.</h2></div>
-          <div className="case-product-detail reveal-block"><p>The operational system is browser-based and designed for a Windows outlet environment. A local PostgreSQL database remains authoritative, with a sanitized one-way cloud replica architecture planned for appropriate remote visibility.</p><div className="case-product-snapshot"><EggProductVisual /></div></div>
+          <div className="case-product-detail reveal-block"><p>The operational system is browser-based and designed for a Windows outlet environment. A local PostgreSQL database remains authoritative, with a sanitized one-way cloud replica architecture planned for appropriate remote visibility.</p><a className="case-pos-photo" href="/images/egg-express/pos-orders.jpg" target="_blank" rel="noreferrer"><Image src="/images/egg-express/pos-orders.jpg" alt="Egg Express POS service selection and table management. Open full-size screenshot." width={1280} height={720} sizes="(max-width: 900px) 100vw, 60vw" /></a></div>
         </div>
       </section>
 

@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useRef } from "react";
-import { EggProductVisual } from "@/components/EggProductVisual";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -86,9 +85,9 @@ export function ContainerScrollShowcase() {
               <span>Order workspace · Development build</span>
               <div className="container-scroll-controls" aria-hidden="true"><i /><i /><i /></div>
             </div>
-            <div className="container-scroll-screen">
-              <EggProductVisual variant="full" />
-            </div>
+            <a className="container-scroll-screen case-pos-photo" href="/images/egg-express/pos-menu.jpg" target="_blank" rel="noreferrer">
+              <Image src="/images/egg-express/pos-menu.jpg" alt="Egg Express POS menu and order workspace. Open full-size screenshot." width={1280} height={720} sizes="(max-width: 900px) 100vw, 1240px" />
+            </a>
           </div>
         </div>
       </div>
