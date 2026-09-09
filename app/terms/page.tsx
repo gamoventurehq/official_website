@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 import { contact } from "@/components/siteContent";
 
-export const metadata: Metadata = { title: "Terms", description: "Terms for using the Gamoventure portfolio website." };
+export const metadata: Metadata = pageMetadata("/terms", "Terms", "Terms for using the Gamoventure portfolio website.");
 
 export default function TermsPage() {
   return (

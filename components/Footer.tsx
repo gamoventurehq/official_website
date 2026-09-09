@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { contact } from "./siteContent";
+import { linkedinUrl } from "@/lib/seo";
 
 export function Footer() {
   return (
@@ -14,7 +15,7 @@ export function Footer() {
           <p>Purpose-built technology for ambitious businesses.</p>
         </div>
         <div className="footer-nav"><span>Explore</span><Link href="/capabilities">Capabilities</Link><Link href="/work">Work</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></div>
-        <div className="footer-nav"><span>Start a conversation</span><a href={`mailto:${contact.email}`}>{contact.email}</a><a href={contact.whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a><a href={`tel:${contact.phoneHref}`}>{contact.phoneDisplay}</a></div>
+        <div className="footer-nav"><span>Start a conversation</span><a href={`mailto:${contact.email}`}>{contact.email}</a><a href={contact.whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a><a href={`tel:${contact.phoneHref}`}>{contact.phoneDisplay}</a><a href={linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
       </div>
       <div className="page-shell footer-legal">
         <p>© {new Date().getFullYear()} Gamoventure. Independent digital product and solutions studio.</p>

@@ -57,7 +57,7 @@ export const processSteps = [
 ] as const;
 
 export const contact = {
-  email: "gamoventure@gmail.com",
+  email: "hello@gamoventure.in",
   phoneDisplay: "+91 8080251000",
   phoneHref: "+918080251000",
   whatsappHref: "https://wa.me/918080251000",

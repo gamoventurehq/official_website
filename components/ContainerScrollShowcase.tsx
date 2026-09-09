@@ -69,7 +69,7 @@ export function ContainerScrollShowcase() {
         <div className="page-shell container-scroll-stage">
           <div className="container-scroll-title" ref={titleRef}>
             <p className="eyebrow">The operating surface</p>
-            <h2>From table selection to a KOT-ready order flow.</h2>
+          <h2>From table selection to a kitchen-ready order flow.</h2>
             <p>
               A focused interface brings service type, menu navigation, order composition,
               and outlet actions into one working environment.

@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const navigationItems = [
   { href: "/capabilities", label: "Capabilities" },
@@ -12,11 +13,14 @@ const navigationItems = [
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`) || (href === "/capabilities" && pathname.startsWith("/services/"));
 
   useEffect(() => {
     if (!menuOpen) return;
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") { setMenuOpen(false); toggleRef.current?.focus(); }
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
@@ -31,13 +35,14 @@ export function Navbar() {
         </Link>
 
         <div className="desktop-nav-links">
-          {navigationItems.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+          {navigationItems.map((item) => <Link href={item.href} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</Link>)}
         </div>
 
-        <Link className="nav-contact" href="/contact">Discuss your project <span aria-hidden="true">↗</span></Link>
+        <Link className="nav-contact" href="/contact" aria-current={pathname === "/contact" ? "page" : undefined}>Discuss your project <span aria-hidden="true">↗</span></Link>
 
         <button
           className="menu-toggle"
+          ref={toggleRef}
           type="button"
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -48,11 +53,11 @@ export function Navbar() {
         </button>
       </nav>
 
-      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`} id="mobile-menu" aria-hidden={!menuOpen}>
+      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`} id="mobile-menu" aria-hidden={!menuOpen} inert={!menuOpen}>
         {navigationItems.map((item) => (
-          <Link href={item.href} key={item.href} onClick={() => setMenuOpen(false)}>{item.label}</Link>
+          <Link href={item.href} key={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} onClick={() => setMenuOpen(false)}>{item.label}</Link>
         ))}
-        <Link href="/contact" onClick={() => setMenuOpen(false)}>Discuss your project</Link>
+        <Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined} onClick={() => setMenuOpen(false)}>Discuss your project</Link>
       </div>
     </header>
   );

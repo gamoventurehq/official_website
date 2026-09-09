@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Megrim, Outfit } from "next/font/google";
+import { Megrim, Outfit } from "next/font/google";
+import { isPreview, organization, siteOrigin } from "@/lib/seo";
 import "./globals.css";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -18,14 +17,9 @@ const megrim = Megrim({
   display: "swap",
 });
 
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(siteOrigin),
+  robots: isPreview ? { index: false, follow: false } : { index: true, follow: true },
   title: {
     default: "Gamoventure — Digital Products & Business Systems",
     template: "%s — Gamoventure",
@@ -39,7 +33,7 @@ export const metadata: Metadata = {
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Gamoventure — Digital products that move businesses forward." }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Gamoventure — Digital Products & Business Systems",
     description: "Purpose-built digital experiences, operational systems, and software products for ambitious businesses.",
     images: ["/og.png"],
@@ -48,8 +42,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${megrim.variable} ${geist.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${outfit.variable} ${megrim.variable}`}>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization).replace(/</g, "\\u003c") }} />
+        {children}
+      </body>
     </html>
   );
 }

@@ -4,9 +4,10 @@ import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { BRAND_SPLASH_REPLAY_EVENT } from "./brandSplashEvent";
+import { claimAutomaticSplash } from "../lib/splash-policy";
 
 export function BrandSplash() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [runId, setRunId] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
   const topPanelRef = useRef<HTMLDivElement>(null);
@@ -21,15 +22,28 @@ export function BrandSplash() {
   const wordmarkRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const skipRef = useRef<HTMLButtonElement>(null);
+  const finishRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        if (claimAutomaticSplash(window.sessionStorage, window.matchMedia("(prefers-reduced-motion: reduce)").matches)) setVisible(true);
+      } catch {
+        // An optional introduction must not block browsing when storage is unavailable.
+      }
+    });
     const replay = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       setVisible(true);
       setRunId((current) => current + 1);
     };
 
     window.addEventListener(BRAND_SPLASH_REPLAY_EVENT, replay);
-    return () => window.removeEventListener(BRAND_SPLASH_REPLAY_EVENT, replay);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener(BRAND_SPLASH_REPLAY_EVENT, replay);
+    };
   }, []);
 
   useLayoutEffect(() => {
@@ -40,6 +54,19 @@ export function BrandSplash() {
     const heroArt = document.querySelector<HTMLElement>(".hero-art");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let finished = false;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousInert = site?.getAttribute("inert") ?? null;
+    const previousHidden = site?.getAttribute("aria-hidden") ?? null;
+    const wasActive = document.body.classList.contains("splash-active");
+    const restore = () => {
+      if (!wasActive) document.body.classList.remove("splash-active");
+      if (site) {
+        if (previousInert === null) site.removeAttribute("inert");
+        else site.setAttribute("inert", previousInert);
+        if (previousHidden === null) site.removeAttribute("aria-hidden");
+        else site.setAttribute("aria-hidden", previousHidden);
+      }
+    };
 
     document.body.classList.add("splash-active");
     site?.setAttribute("inert", "");
@@ -48,12 +75,26 @@ export function BrandSplash() {
     const finish = () => {
       if (finished) return;
       finished = true;
-      document.body.classList.remove("splash-active");
-      site?.removeAttribute("inert");
-      site?.removeAttribute("aria-hidden");
+      timelineRef.current?.kill();
+      restore();
       setVisible(false);
+      if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
       window.dispatchEvent(new Event("gamoventure:splash-complete"));
     };
+    finishRef.current = finish;
+    const timeout = window.setTimeout(finish, 8000);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") finish();
+      if (event.key === "Tab") {
+        event.preventDefault();
+        skipRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    skipRef.current?.focus({ preventScroll: true });
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const motionChanged = () => { if (motion.matches) finish(); };
+    motion.addEventListener("change", motionChanged);
 
     const context = gsap.context(() => {
       const timeline = gsap.timeline({ onComplete: finish });
@@ -72,9 +113,7 @@ export function BrandSplash() {
       gsap.set(emblemRef.current, { x: 0, y: 0, scale: 1, transformOrigin: "center center" });
 
       if (prefersReducedMotion) {
-        timeline
-          .set([plateRef.current, ringsRef.current, innerRef.current, wordmarkRef.current], { autoAlpha: 1, scale: 1, y: 0 })
-          .to(root, { autoAlpha: 0, duration: 0.35, delay: 0.45, ease: "power2.out" });
+        finish();
         return;
       }
 
@@ -157,9 +196,12 @@ export function BrandSplash() {
     return () => {
       context.revert();
       timelineRef.current = null;
-      document.body.classList.remove("splash-active");
-      site?.removeAttribute("inert");
-      site?.removeAttribute("aria-hidden");
+      finishRef.current = null;
+      window.clearTimeout(timeout);
+      document.removeEventListener("keydown", onKeyDown);
+      motion.removeEventListener("change", motionChanged);
+      restore();
+      if (root.contains(document.activeElement) && previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
     };
   }, [runId, visible]);
 
@@ -167,6 +209,7 @@ export function BrandSplash() {
 
   return (
     <div className="brand-splash" ref={rootRef} role="dialog" aria-modal="true" aria-label="Gamoventure introduction">
+      <button className="splash-skip" type="button" ref={skipRef} onClick={() => finishRef.current?.()}>Skip introduction</button>
       <div className="splash-panel splash-panel-top" ref={topPanelRef} />
       <div className="splash-panel splash-panel-bottom" ref={bottomPanelRef} />
 

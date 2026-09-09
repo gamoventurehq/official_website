@@ -27,8 +27,6 @@ export function Hero() {
         </div>
 
         <div className="hero-art" aria-label="Gamoventure emblem study">
-          <div className="hero-art-grid" aria-hidden="true" />
-          <div className="hero-art-halo" aria-hidden="true" />
           <div className="hero-art-mark">
             <Image
               src="/logos/generated/symbol_full.png"

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { services } from "@/lib/services";
+import { pageMetadata } from "@/lib/seo";
 import { ContactCTA } from "@/components/ContactCTA";
 import { IndustryMarquee } from "@/components/IndustryMarquee";
 import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 import { capabilities } from "@/components/siteContent";
 
-export const metadata: Metadata = {
-  title: "Capabilities",
-  description: "Explore Gamoventure's capabilities across product strategy, digital experiences, business systems, product engineering, and ongoing growth.",
-};
+export const metadata: Metadata = pageMetadata("/capabilities", "Custom Software, Websites & Product Development", "Explore Gamoventure's services: business websites, custom software, workflow automation, product development, and ongoing support.");
 
 export default function CapabilitiesPage() {
   return (
@@ -21,6 +21,9 @@ export default function CapabilitiesPage() {
       />
 
       <section className="chapter capability-list-chapter">
+        <nav className="page-shell service-links" aria-label="Explore our services">
+          {services.map((service) => <Link key={service.slug} href={`/services/${service.slug}`}>{service.title}</Link>)}
+        </nav>
         <div className="page-shell pin-layout capability-list-layout">
           <div className="pin-copy"><p className="eyebrow">From problem to progress</p><h2>Every capability begins with a business reason.</h2><p>Deliverables are shaped after discovery—not pulled from a one-size-fits-all package.</p></div>
           <div className="pin-stack capability-detail-list">
