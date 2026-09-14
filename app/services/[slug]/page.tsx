@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 import { ContactCTA } from "@/components/ContactCTA";
+import { ServicePricing } from "@/components/ServicePricing";
 import { services } from "@/lib/services";
 import { pageMetadata } from "@/lib/seo";
 
@@ -24,6 +25,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <SitePage>
       <PageHero compact title={service.heading} copy={service.intro} />
       <div className="service-page-body">
+        {service.pricing && <ServicePricing pricing={service.pricing} />}
         <article className="page-shell service-reading">
           <Link href="/capabilities">All capabilities</Link>
           {service.sections.map((section) => <section key={section.title}><h2>{section.title}</h2><p>{section.copy}</p></section>)}

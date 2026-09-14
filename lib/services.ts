@@ -1,4 +1,24 @@
-export const services = [
+export type ServicePricing = {
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  packages: { name: string; price: string; features: string[] }[];
+  notes: { title: string; copy: string }[];
+  exclusions: string[];
+};
+
+type Service = {
+  slug: string;
+  title: string;
+  heading: string;
+  description: string;
+  intro: string;
+  sections: { title: string; copy: string }[];
+  evidence: { href: string; label: string };
+  pricing?: ServicePricing;
+};
+
+export const services: readonly Service[] = [
   {
     slug: "custom-business-software",
     title: "Custom Business Software & Automation",
@@ -17,7 +37,7 @@ export const services = [
     slug: "business-websites",
     title: "Business Websites & Customer Portals",
     heading: "A digital presence that helps customers act.",
-    description: "Business websites and customer portals designed around your services, customer questions, and enquiry flow, with responsive UI and technical SEO foundations.",
+    description: "Defined informational business website packages at ₹10,000 and ₹25,000, with responsive design, copywriting and search foundations. Portals quoted separately.",
     intro: "Your website should help a visitor understand the business, find the right service, and take a useful next step. We design and develop business websites and customer-facing interfaces with that journey in mind.",
     sections: [
       { title: "Give customers the information they need", copy: "We begin with your services, the questions customers ask, and the action each page should support. That creates a practical page structure before visual design starts. Existing brand materials, approved photography, and real business information shape the result. We can also help turn an incomplete content brief into a clear first version for your review." },
@@ -26,6 +46,66 @@ export const services = [
       { title: "Keep the site useful after launch", copy: "We agree who will update content, how enquiries will be handled, and what support is needed after handoff. Maintenance and future improvements are quoted around the actual website and responsibilities. Our current Shree Maruti Transport Services website engagement is in development, with service information, fleet imagery, coverage information, and an enquiry journey under review." },
     ],
     evidence: { href: "/work#shree-maruti", label: "Read about the Shree Maruti engagement" },
+    pricing: {
+      eyebrow: "Website packages",
+      heading: "A clear scope before work begins.",
+      intro: "Choose a defined package for an informational business website. We confirm the pages, content and responsibilities with you before accepting the project. Portals, custom functionality and wider product work are quoted separately.",
+      packages: [
+        {
+          name: "Business Website",
+          price: "₹10,000",
+          features: [
+            "Up to 5 separate pages",
+            "Up to 5 agreed content sections per page",
+            "One brand-adapted design direction using a consistent reusable layout system",
+            "Copywriting for the agreed pages, based on business information supplied and approved by the client",
+            "Responsive implementation for desktop, tablet and phone",
+            "One enquiry form with up to 6 fields, delivered to one email inbox",
+            "Call, WhatsApp or social links where relevant",
+            "Map or directions link where relevant",
+            "Basic technical SEO foundations",
+            "3 revision rounds",
+            "5 business days of production time",
+          ],
+        },
+        {
+          name: "Tailored Business Website",
+          price: "₹25,000",
+          features: [
+            "Up to 8 separate pages",
+            "Up to 7 agreed content sections per page",
+            "One tailored design direction with a custom homepage and more varied inner-page layouts",
+            "Restrained, purposeful animation where it supports the content",
+            "Copywriting for the agreed pages, based on business information supplied and approved by the client",
+            "Responsive implementation for desktop, tablet and phone",
+            "One enquiry form with up to 6 fields, delivered to one email inbox",
+            "Call, WhatsApp or social links where relevant",
+            "Map or directions link where relevant",
+            "Basic technical SEO foundations",
+            "Google Search Console setup and one agreed analytics tool, using client-controlled accounts",
+            "5 revision rounds",
+            "10 business days of production time",
+          ],
+        },
+      ],
+      notes: [
+        { title: "Timing and allowances", copy: "Production starts after we receive the advance, complete brief, required content and assets, and necessary account access. Waiting for client feedback is excluded. Page and section counts are maximum allowances, not targets to fill." },
+        { title: "Feedback and changes", copy: "Each revision round is one consolidated feedback list from one client decision-maker. A new design direction, new pages or new functionality changes the scope. Corrections to our own implementation errors do not use a revision round." },
+        { title: "Client-controlled services", copy: "Domain registration, hosting, business email, paid assets, paid plugins and other third-party services are purchased or funded by you and remain in client-controlled accounts." },
+        { title: "After launch", copy: "A 30-day post-launch defect-reporting window covers reproducible failures within the agreed delivered scope—not enhancements, client-made changes or third-party outages. Post-delivery changes, maintenance, content updates and further development are quoted separately." },
+        { title: "Search expectations", copy: "Search foundations and analytics setup do not guarantee rankings, traffic, enquiries or sales." },
+      ],
+      exclusions: [
+        "CMS or CRM functionality",
+        "Ecommerce, payment collection or online ordering",
+        "Booking systems, user accounts or private dashboards",
+        "File uploads, automated quotations or custom integrations",
+        "Multilingual content or translation",
+        "Extensive research or legal-policy drafting",
+        "Logo design, full brand identity, photography, 3D work or promotional video",
+        "Ongoing hosting, maintenance, SEO or marketing services",
+      ],
+    },
   },
   {
     slug: "product-development",

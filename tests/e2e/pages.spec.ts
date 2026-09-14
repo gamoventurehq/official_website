@@ -5,6 +5,36 @@ const paths = [
   "/services/business-websites", "/services/custom-business-software", "/services/product-development",
 ];
 
+test("capability detail panels keep brand colors and readable text", async ({ page }, testInfo) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/capabilities");
+  const panels = page.locator(".capability-detail-card");
+  await expect(panels).toHaveCount(5);
+  const results = await panels.evaluateAll((elements) => {
+    const luminance = (color: string) => {
+      const channels = color.match(/[\d.]+/g)!.slice(0, 3).map(Number).map((channel) => {
+        const value = channel / 255;
+        return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4;
+      });
+      return channels[0] * .2126 + channels[1] * .7152 + channels[2] * .0722;
+    };
+    return elements.map((element) => {
+      const background = getComputedStyle(element).backgroundColor;
+      const ratios = [...element.querySelectorAll("h3, p, li")].map((text) => {
+        const foreground = luminance(getComputedStyle(text).color);
+        const surface = luminance(background);
+        return (Math.max(foreground, surface) + .05) / (Math.min(foreground, surface) + .05);
+      });
+      return { background, ratios };
+    });
+  });
+  expect(new Set(results.map((result) => result.background)).size).toBe(3);
+  for (const result of results) for (const ratio of result.ratios) expect(ratio).toBeGreaterThanOrEqual(4.5);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+  await panels.nth(1).scrollIntoViewIfNeeded();
+  await page.screenshot({ path: `/tmp/capability-colors-${testInfo.project.name}.png` });
+});
+
 for (const path of ["/", "/work"]) {
   test(`${path} shows a local, non-clickable Shree Maruti preview`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });

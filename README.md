@@ -40,7 +40,11 @@ Before enabling delivery in Vercel Production:
 
 When disabled or unconfigured, the form returns a clear unavailable message with a direct email alternative. Delivery/network errors preserve the user's entries and never show false success. No credentials or inquiry bodies are logged by the handler. The hero emblem has no opaque panel or grid; its replay control remains available.
 
-## Egg Express media
+## Website packages
+
+The Business Websites service page renders its fixed informational-website packages from the optional typed `pricing` data in `lib/services.ts`. Other services remain separately quoted. Package scope, shared notes and exclusions are displayed together; the enquiry CTA uses the existing contact page, not checkout. Run `npm test` and, after `npm run build`, `npm run test:e2e -- tests/e2e/pricing.spec.ts` to check the package data and desktop/375 px behaviour.
+
+## Client media
 
 The Shree Maruti entry uses a non-clickable local homepage snapshot captured from its approved Vercel preview on 10 September 2026. It appears on Home and Work, labelled as in development; the portfolio does not embed or link to the temporary deployment. Refresh `public/images/shree-maruti/website-preview.png` when the approved design changes.
 

@@ -25,7 +25,7 @@ export default function CapabilitiesPage() {
           {services.map((service) => <Link key={service.slug} href={`/services/${service.slug}`}>{service.title}</Link>)}
         </nav>
         <div className="page-shell pin-layout capability-list-layout">
-          <div className="pin-copy"><p className="eyebrow">From problem to progress</p><h2>Every capability begins with a business reason.</h2><p>Deliverables are shaped after discovery—not pulled from a one-size-fits-all package.</p></div>
+          <div className="pin-copy"><p className="eyebrow">From problem to progress</p><h2>Every capability begins with a business reason.</h2><p>Custom work is scoped after discovery. Informational business websites can use defined packages, with pages and responsibilities agreed before work begins.</p></div>
           <div className="pin-stack capability-detail-list">
             {capabilities.map((capability) => (
               <article id={capability.slug} key={capability.slug} className="capability-detail-card reveal-block">
