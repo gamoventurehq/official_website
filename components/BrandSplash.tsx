@@ -82,7 +82,7 @@ export function BrandSplash() {
       window.dispatchEvent(new Event("gamoventure:splash-complete"));
     };
     finishRef.current = finish;
-    const timeout = window.setTimeout(finish, 8000);
+    const timeout = window.setTimeout(finish, 4000);
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") finish();
       if (event.key === "Tab") {
@@ -118,40 +118,40 @@ export function BrandSplash() {
       }
 
       timeline
-        .to(plateRef.current, { autoAlpha: 0.96, scale: 1, rotate: 0, duration: 0.72, ease: "expo.out" }, 0.12)
+        .to(plateRef.current, { autoAlpha: 0.96, scale: 1, rotate: 0, duration: 0.34, ease: "expo.out" }, 0.05)
         .to(ringsRef.current, {
           autoAlpha: 1,
           scale: 1,
           rotate: 0,
-          duration: 1.05,
+          duration: 0.46,
           ease: "expo.out",
           filter: "drop-shadow(0 0 14px rgba(255,150,102,.95)) drop-shadow(0 0 42px rgba(255,150,102,.72))",
-        }, 0.72)
-        .to(ringsBloomRef.current, { autoAlpha: 0.92, scale: 1.04, duration: 0.68, ease: "power2.out" }, 0.88)
-        .to(pulseRef.current, { autoAlpha: 0.8, scale: 1.45, duration: 0.82, ease: "power2.out" }, 1.08)
-        .to(pulseRef.current, { autoAlpha: 0, scale: 1.86, duration: 0.55, ease: "power2.in" }, 1.62)
+        }, 0.26)
+        .to(ringsBloomRef.current, { autoAlpha: 0.92, scale: 1.04, duration: 0.34, ease: "power2.out" }, 0.34)
+        .to(pulseRef.current, { autoAlpha: 0.8, scale: 1.45, duration: 0.38, ease: "power2.out" }, 0.42)
+        .to(pulseRef.current, { autoAlpha: 0, scale: 1.86, duration: 0.28, ease: "power2.in" }, 0.68)
         .to(innerRef.current, {
           autoAlpha: 1,
           scale: 1,
           rotate: 0,
-          duration: 1,
+          duration: 0.44,
           ease: "expo.out",
           filter: "drop-shadow(0 0 12px rgba(255,150,102,1)) drop-shadow(0 0 36px rgba(255,150,102,.78))",
-        }, 1.82)
-        .to(innerBloomRef.current, { autoAlpha: 0.96, scale: 1.04, duration: 0.72, ease: "power2.out" }, 1.96)
-        .to(emblemRef.current, { scale: 1.045, duration: 0.28, ease: "power2.out", yoyo: true, repeat: 1 }, 2.7)
+        }, 0.74)
+        .to(innerBloomRef.current, { autoAlpha: 0.96, scale: 1.04, duration: 0.34, ease: "power2.out" }, 0.8)
+        .to(emblemRef.current, { scale: 1.045, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1 }, 1.12)
         .to(wordmarkRef.current, {
           autoAlpha: 1,
           y: 0,
           letterSpacing: "0.08em",
-          duration: 0.9,
+          duration: 0.42,
           ease: "expo.out",
-        }, 2.9)
-        .to(marqueeRef.current, { autoAlpha: 0.16, duration: 0.55, ease: "power2.out" }, 3.25)
-        .to(".splash-marquee-track", { xPercent: -12, duration: 1.5, ease: "none" }, 3.25)
-        .to(wordmarkRef.current, { autoAlpha: 0, y: -22, duration: 0.42, ease: "power2.in" }, 4.12)
-        .to(marqueeRef.current, { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 4.12)
-        .set(heroArt, { autoAlpha: 0 }, 4.18)
+        }, 1.2)
+        .to(marqueeRef.current, { autoAlpha: 0.16, duration: 0.26, ease: "power2.out" }, 1.32)
+        .to(".splash-marquee-track", { xPercent: -12, duration: 0.65, ease: "none" }, 1.32)
+        .to(wordmarkRef.current, { autoAlpha: 0, y: -22, duration: 0.22, ease: "power2.in" }, 1.78)
+        .to(marqueeRef.current, { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 1.78)
+        .set(heroArt, { autoAlpha: 0 }, 1.8)
         .to(emblemRef.current, {
           x: () => {
             if (!heroArt || !emblemRef.current) return 0;
@@ -183,14 +183,14 @@ export function BrandSplash() {
               window.innerWidth <= 620 ? 0.9 : 1.08,
             );
           },
-          duration: 1.18,
+          duration: 0.52,
           ease: "expo.inOut",
-        }, 4.28)
-        .to(topPanelRef.current, { yPercent: -101, duration: 1.08, ease: "expo.inOut" }, 4.38)
-        .to(bottomPanelRef.current, { yPercent: 101, duration: 1.08, ease: "expo.inOut" }, 4.38)
-        .to(heroArt, { autoAlpha: 1, duration: 0.62, ease: "power2.out" }, 4.9)
-        .to(emblemRef.current, { autoAlpha: 0, duration: 0.46, ease: "power2.out" }, 5.02)
-        .to(root, { autoAlpha: 0, pointerEvents: "none", duration: 0.3 }, 5.42);
+        }, 1.84)
+        .to(topPanelRef.current, { yPercent: -101, duration: 0.48, ease: "expo.inOut" }, 1.88)
+        .to(bottomPanelRef.current, { yPercent: 101, duration: 0.48, ease: "expo.inOut" }, 1.88)
+        .to(heroArt, { autoAlpha: 1, duration: 0.28, ease: "power2.out" }, 2.18)
+        .to(emblemRef.current, { autoAlpha: 0, duration: 0.22, ease: "power2.out" }, 2.22)
+        .to(root, { autoAlpha: 0, pointerEvents: "none", duration: 0.16 }, 2.32);
     }, root);
 
     return () => {
@@ -221,11 +221,11 @@ export function BrandSplash() {
 
       <div className="splash-lockup">
         <div className="splash-emblem" ref={emblemRef} aria-label="Gamoventure emblem">
-          <div className="splash-layer splash-plate" ref={plateRef}><Image src="/logos/generated/shield_clean.png" alt="" fill sizes="430px" priority /></div>
-          <div className="splash-layer splash-rings-bloom" ref={ringsBloomRef}><Image src="/logos/generated/symbol_rings_bloom.png" alt="" fill sizes="430px" priority /></div>
-          <div className="splash-layer splash-rings" ref={ringsRef}><Image src="/logos/generated/symbol_rings.png" alt="" fill sizes="430px" priority /></div>
-          <div className="splash-layer splash-inner-bloom" ref={innerBloomRef}><Image src="/logos/generated/symbol_inner_bloom.png" alt="" fill sizes="430px" priority /></div>
-          <div className="splash-layer splash-inner" ref={innerRef}><Image src="/logos/generated/symbol_inner.png" alt="" fill sizes="430px" priority /></div>
+          <div className="splash-layer splash-plate" ref={plateRef}><Image src="/logos/generated/shield_clean.png" alt="" fill sizes="430px" loading="eager" /></div>
+          <div className="splash-layer splash-rings-bloom" ref={ringsBloomRef}><Image src="/logos/generated/symbol_rings_bloom.png" alt="" fill sizes="430px" loading="eager" /></div>
+          <div className="splash-layer splash-rings" ref={ringsRef}><Image src="/logos/generated/symbol_rings.png" alt="" fill sizes="430px" loading="eager" /></div>
+          <div className="splash-layer splash-inner-bloom" ref={innerBloomRef}><Image src="/logos/generated/symbol_inner_bloom.png" alt="" fill sizes="430px" loading="eager" /></div>
+          <div className="splash-layer splash-inner" ref={innerRef}><Image src="/logos/generated/symbol_inner.png" alt="" fill sizes="430px" loading="eager" /></div>
           <div className="splash-energy-pulse" ref={pulseRef} aria-hidden="true" />
         </div>
         <div className="splash-wordmark brand-wordmark" ref={wordmarkRef}>Gamoventure</div>

@@ -11,13 +11,15 @@ export function Hero() {
       <div className="page-shell hero-layout">
         <div className="hero-copy">
           <h1 className="max-w-hero hero-title">
-            We build digital products that move businesses forward.
+            Custom software, business websites, and operational systems.
           </h1>
 
           <div className="hero-support">
             <p>
-              Gamoventure turns business challenges into purpose-built digital experiences,
-              operational systems, and software products.
+              Gamoventure is an independent software and web development studio working with
+              businesses across India and internationally. We design and engineer fixed-scope
+              business websites at ₹10,000 and ₹25,000, customer portals, local-first point-of-sale
+              and inventory systems, and custom software products built around daily operations.
             </p>
             <div className="hero-actions">
               <Link className="button button-light" href="/contact">Discuss your project <span aria-hidden="true">↗</span></Link>

@@ -1,0 +1,82 @@
+# Gamoventure: Complete Studio Reference
+
+Last updated: 2026-11-23
+Origin: https://www.gamoventure.in
+Email: hello@gamoventure.in
+Phone / WhatsApp: +91 8080251000
+LinkedIn: https://www.linkedin.com/company/gamoventure
+Availability: Remote-first, serving businesses across India and internationally
+
+## Overview
+
+Gamoventure is an independent digital product and solutions studio. We partner directly with local and growing businesses to replace fragile manual processes with custom operational software, launch clear informational business websites at fixed package prices, and engineer custom software products from discovery to first release.
+
+## Five core capabilities (`/capabilities`)
+
+1. **Product Strategy & Direction**: Discovery workshops, requirements and workflow mapping, product roadmaps, technical direction, and release planning.
+2. **Digital Experiences**: Conversion-led business websites, customer and business portals, responsive interfaces, UI/UX systems, and performance/accessibility work.
+3. **Business Systems & Automation**: Custom operational systems, dashboards and reporting, workflow automation, inventory and order tools, and third-party API integrations.
+4. **Product Engineering**: Product architecture, full-stack development, API and data design, automated testing, deployment, documentation, and staff training.
+5. **Ongoing Operations & Growth**: Hosting and monitoring, backups and maintenance, bug support, analytics, and continuous product iteration (Care & Continuity and Growth & Evolution tracks).
+
+## Service 1: Business Websites & Customer Portals (`/services/business-websites`)
+
+Gamoventure offers two fixed-price packages in Indian Rupees (INR) for informational business websites. Customer portals, authenticated dashboards, and custom web applications are quoted separately after discovery.
+
+### Package comparison
+
+| Deliverable | Business Website (₹10,000) | Tailored Business Website (₹25,000) |
+|---|---|---|
+| Maximum pages | Up to 5 separate pages | Up to 8 separate pages |
+| Sections per page | Up to 5 agreed sections | Up to 7 agreed sections |
+| Design direction | Brand-adapted reusable layout system | Custom homepage and varied inner-page layouts |
+| Motion | Standard interface states | Restrained, purposeful content animation |
+| Copywriting | Included from client-supplied details | Included from client-supplied details |
+| Responsive build | Desktop, tablet, and phone | Desktop, tablet, and phone |
+| Enquiry form | Up to 6 fields to 1 email inbox | Up to 6 fields to 1 email inbox |
+| Direct contact links | Call, WhatsApp, social, and map links | Call, WhatsApp, social, and map links |
+| Search & analytics | Basic technical SEO foundations | Basic technical SEO + Search Console + 1 analytics tool |
+| Revision rounds | 3 consolidated rounds | 5 consolidated rounds |
+| Production time | 5 business days | 10 business days |
+
+### Key package terms and exclusions
+
+- Client owns and funds domain registration, hosting, business email, and third-party accounts directly.
+- Production clock starts after receipt of advance, complete brief, required content/assets, and account access; client review wait times are excluded.
+- Includes a 30-day post-launch defect-reporting window for reproducible defects within the delivered scope.
+- Excludes CMS/CRM, ecommerce/payments/online ordering, booking/user accounts/private dashboards, file uploads/custom integrations, multilingual translation, legal drafting, logo/brand identity/photography/video production, and ongoing hosting/maintenance/SEO retainers.
+
+## Service 2: Custom Business Software & Automation (`/services/custom-business-software`)
+
+- **Scope**: Order and table systems, inventory tracking, internal operational dashboards, role-based access, thermal printing workflows, API integrations, and automated cross-tool handoffs.
+- **Pricing**: Quoted after workflow discovery with a written scope reviewed before development starts.
+- **Architecture options**: Cloud web apps or local-first offline-capable systems (such as local PostgreSQL with optional one-way cloud reporting) when operations cannot rely on internet uptime.
+
+## Service 3: Digital Product Design & Development (`/services/product-development`)
+
+- **Scope**: Early problem definition, first-release scoping, UI/UX design, full-stack engineering, database and API modelling, automated unit and end-to-end testing, deployment rehearsals, and documentation.
+- **Pricing**: Quoted after discovery based on workflows, roles, integrations, and infrastructure needs.
+
+## Active client case studies (`/work`)
+
+### 1. Egg Express POS (`/work/egg-express-pos`)
+
+- **Client**: Egg Express, food outlet in Ulhasnagar, Maharashtra, India.
+- **Status**: Active client engagement, currently in development.
+- **Problem**: Replace a generic vendor subscription POS with an outlet-owned system tailored to dine-in, counter, takeaway, kitchen, billing, and stock workflows that continues running without internet.
+- **Architecture**: Browser-based POS running on the outlet's local Windows machine with a local PostgreSQL primary database, plus a planned one-way sanitized cloud replica for remote owner visibility.
+- **Demonstrated capabilities**: Dine-in/counter/takeaway order and table management, physical thermal kitchen order ticket (KOT) and bill printing, cash and digital payment recording, recipe-linked inventory deductions, owner/cashier roles, downloadable reports, and automated test rehearsals.
+- **Remaining stages**: Live outlet installation, client acceptance testing, staff training, and final rollout checks.
+
+### 2. Shree Maruti Transport Services (`/work#shree-maruti`)
+
+- **Client**: Shree Maruti Transport Services, chemical and liquid cargo transporter in Bhiwandi, Maharashtra, India.
+- **Status**: Client business website currently in development.
+- **Scope**: Seven-page responsive business website covering transport services, fleet gallery, safety and technology, regional coverage map, and transport enquiry preparation (currently preparing a copyable draft while launch details are finalized).
+
+## Contact and inquiry process (`/contact`)
+
+- **Email**: hello@gamoventure.in
+- **Telephone**: +91 8080251000
+- **WhatsApp**: https://wa.me/918080251000
+- **Web inquiry**: https://www.gamoventure.in/contact (no finished specification required; response target within 2 business days).

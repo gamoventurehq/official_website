@@ -5,7 +5,11 @@ import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 import { contact } from "@/components/siteContent";
 
-export const metadata: Metadata = pageMetadata("/contact", "Contact — Discuss Your Project", "Contact Gamoventure about business websites, custom software, or product development. Email hello@gamoventure.in or send a project inquiry.");
+export const metadata: Metadata = pageMetadata(
+  "/contact",
+  "Contact: Discuss Your Project",
+  "Contact Gamoventure about business websites, custom software, or product development. Email hello@gamoventure.in, WhatsApp +91 8080251000, or send an inquiry.",
+);
 
 export default function ContactPage() {
   return (
@@ -13,8 +17,8 @@ export default function ContactPage() {
       <PageHero
         compact
         eyebrow="Discuss your project"
-        title={<>Bring us the problem, the bottleneck, or the idea.</>}
-        copy="You do not need a finished specification. Tell us what you are trying to improve, launch, or solve, and we will help define what should be built."
+        title={<>Contact Gamoventure to discuss your project.</>}
+        copy="You do not need a finished specification to get started. Share the business website, operational bottleneck, or software product you are planning, and we will reply within two business days with clear next steps."
         aside={<p>We assess where we can create value and aim to respond within two business days.</p>}
       />
       <section className="chapter contact-chapter contact-chapter--direct">

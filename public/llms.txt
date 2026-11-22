@@ -1,0 +1,30 @@
+# Gamoventure
+
+> Gamoventure is an independent software engineering and web development studio serving growing businesses in India and internationally. We build fixed-scope informational business websites (₹10,000 and ₹25,000), customer portals, offline-capable operational systems, and custom software products shaped around daily workflows.
+
+Last updated: 2026-11-23
+Website: https://www.gamoventure.in
+Email: hello@gamoventure.in
+Telephone / WhatsApp: +91 8080251000
+LinkedIn: https://www.linkedin.com/company/gamoventure
+
+## Core services and pricing
+
+- [Business Websites & Customer Portals](https://www.gamoventure.in/services/business-websites): Fixed informational website packages at ₹10,000 (up to 5 pages, 5 business days) and ₹25,000 (up to 8 pages, 10 business days, custom layouts, Search Console and analytics setup). Portals quoted separately.
+- [Machine-readable website pricing spec](https://www.gamoventure.in/pricing.md): Full package comparison table, inclusions, turnaround terms, 30-day defect window, and exclusions.
+- [Custom Business Software & Automation](https://www.gamoventure.in/services/custom-business-software): Purpose-built order, billing, inventory, dashboard, and workflow automation systems, scoped and quoted after workflow discovery.
+- [Digital Product Design & Development](https://www.gamoventure.in/services/product-development): End-to-end discovery, UI design, full-stack development, automated testing, and release preparation for custom software products.
+- [Capabilities Overview](https://www.gamoventure.in/capabilities): Product strategy, digital experiences, business systems, product engineering, and post-launch maintenance.
+
+## Selected client work
+
+- [Egg Express POS Case Study](https://www.gamoventure.in/work/egg-express-pos): Local-first Windows and PostgreSQL restaurant point-of-sale, kitchen order ticket (KOT), billing, and recipe-linked inventory system for a food outlet in Ulhasnagar, Maharashtra (currently in development; core demonstrated, live outlet rollout ahead).
+- [Client Work Index](https://www.gamoventure.in/work): Overview of Egg Express POS and the seven-page business website in development for Shree Maruti Transport Services (chemical and liquid cargo transporter in Bhiwandi, Maharashtra).
+
+## Studio and policies
+
+- [About Gamoventure](https://www.gamoventure.in/about): Independent, remote-first digital product studio where clients work directly with the founding team.
+- [Contact Gamoventure](https://www.gamoventure.in/contact): Project inquiry form (two-business-day response target), direct email, telephone, and WhatsApp.
+- [Privacy Policy](https://www.gamoventure.in/privacy): Inquiry handling via Vercel and Hostinger SMTP, no advertising or analytics cookies.
+- [Terms of Use](https://www.gamoventure.in/terms): Website terms, inquiry disclaimers, and development-status disclosures.
+- [Full studio reference (llms-full.txt)](https://www.gamoventure.in/llms-full.txt): Single-file compilation of Gamoventure's services, pricing, case studies, capabilities, and FAQs.

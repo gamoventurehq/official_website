@@ -12,14 +12,38 @@ export function Footer() {
             <Image src="/logos/symbol.png" alt="" width={38} height={38} />
             <span className="brand-wordmark">Gamoventure</span>
           </Link>
-          <p>Purpose-built technology for ambitious businesses.</p>
+          <p>Custom software, business websites, and operational systems for growing businesses.</p>
         </div>
-        <div className="footer-nav"><span>Explore</span><Link href="/capabilities">Capabilities</Link><Link href="/work">Work</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></div>
-        <div className="footer-nav"><span>Start a conversation</span><a href={`mailto:${contact.email}`}>{contact.email}</a><a href={contact.whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a><a href={`tel:${contact.phoneHref}`}>{contact.phoneDisplay}</a><a href={linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+        <div className="footer-nav">
+          <span>Explore</span>
+          <Link href="/capabilities">Capabilities</Link>
+          <Link href="/work">Work</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
+        <div className="footer-nav">
+          <span>Services</span>
+          <Link href="/services/business-websites">Business Websites & Packages</Link>
+          <Link href="/services/custom-business-software">Custom Business Software</Link>
+          <Link href="/services/product-development">Product Development</Link>
+          <Link href="/work/egg-express-pos">Egg Express POS Case Study</Link>
+        </div>
+        <div className="footer-nav">
+          <span>Start a conversation</span>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <a href={contact.whatsappHref} target="_blank" rel="noreferrer">WhatsApp</a>
+          <a href={`tel:${contact.phoneHref}`}>{contact.phoneDisplay}</a>
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
       </div>
       <div className="page-shell footer-legal">
         <p>© {new Date().getFullYear()} Gamoventure. Independent digital product and solutions studio.</p>
-        <div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
+        <div>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <a href="/pricing.md">Pricing spec</a>
+          <a href="/llms.txt">LLMs.txt</a>
+        </div>
       </div>
     </footer>
   );

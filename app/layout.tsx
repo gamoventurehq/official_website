@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Megrim, Outfit } from "next/font/google";
-import { isPreview, organization, siteOrigin } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { isPreview, organization, siteOrigin, website } from "@/lib/seo";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -21,21 +22,21 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   robots: isPreview ? { index: false, follow: false } : { index: true, follow: true },
   title: {
-    default: "Gamoventure — Digital Products & Business Systems",
-    template: "%s — Gamoventure",
+    default: "Gamoventure | Custom Software & Business Websites",
+    template: "%s | Gamoventure",
   },
-  description: "Gamoventure is an independent digital product and solutions studio building purpose-built technology for ambitious businesses.",
+  description: "Gamoventure is an independent digital product and solutions studio building business websites, custom software, and operational systems.",
   icons: { icon: "/logos/symbol.png" },
   openGraph: {
-    title: "Gamoventure — Digital Products & Business Systems",
-    description: "Purpose-built digital experiences, operational systems, and software products for ambitious businesses.",
+    title: "Gamoventure | Custom Software & Business Websites",
+    description: "Business websites, operational systems, and custom software products for growing businesses.",
     type: "website",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Gamoventure — Digital products that move businesses forward." }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Gamoventure: Custom software and business websites." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gamoventure — Digital Products & Business Systems",
-    description: "Purpose-built digital experiences, operational systems, and software products for ambitious businesses.",
+    title: "Gamoventure | Custom Software & Business Websites",
+    description: "Business websites, operational systems, and custom software products for growing businesses.",
     images: ["/og.png"],
   },
 };
@@ -44,7 +45,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${outfit.variable} ${megrim.variable}`}>
       <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization).replace(/</g, "\\u003c") }} />
+        <JsonLd data={organization} />
+        <JsonLd data={website} />
         {children}
       </body>
     </html>

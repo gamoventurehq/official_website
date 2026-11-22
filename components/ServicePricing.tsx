@@ -19,6 +19,29 @@ export function ServicePricing({ pricing }: { pricing: ServicePricingData }) {
           </article>
         ))}
       </div>
+      <div className="website-pricing-comparison">
+        <h3>Side-by-side package comparison</h3>
+        <div className="website-comparison-scroll">
+          <table className="website-comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">Deliverable</th>
+                <th scope="col">{pricing.packages[0]?.name ?? "Business Website"}</th>
+                <th scope="col">{pricing.packages[1]?.name ?? "Tailored Business Website"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pricing.comparison.map((row) => (
+                <tr key={row.attribute}>
+                  <th scope="row">{row.attribute}</th>
+                  <td>{row.standard}</td>
+                  <td>{row.tailored}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
       <div className="website-pricing-notes">
         <h3>How the scope works</h3>
         <dl>{pricing.notes.map((note) => (
@@ -32,7 +55,7 @@ export function ServicePricing({ pricing }: { pricing: ServicePricingData }) {
       </div>
       <div className="website-pricing-action">
         <Link className="button button-dark" href="/contact">Discuss your website</Link>
-        <p>We confirm fit and scope before accepting your project.</p>
+        <p>We confirm fit and scope before accepting your project. Machine-readable spec: <a href="/pricing.md">/pricing.md</a></p>
       </div>
     </section>
   );

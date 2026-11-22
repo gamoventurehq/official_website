@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, siteLastUpdatedDisplay } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { ContactCTA } from "@/components/ContactCTA";
@@ -8,21 +8,30 @@ import { PageHero } from "@/components/PageHero";
 import { SitePage } from "@/components/SitePage";
 import { ShreeMarutiPreview } from "@/components/ShreeMarutiPreview";
 
-export const metadata: Metadata = pageMetadata("/work", "Client Work — Software & Business Websites", "Explore Gamoventure's ongoing work: Egg Express POS and the Shree Maruti Transport Services business website, with clear development status.");
+export const metadata: Metadata = pageMetadata(
+  "/work",
+  "Client Work: Software & Business Websites",
+  "Explore Gamoventure's active client builds: the offline-first Egg Express POS system and the Shree Maruti Transport Services website.",
+);
 
 export default function WorkPage() {
   return (
     <SitePage>
       <PageHero
-        eyebrow="Selected work"
-        title={<>Real problems. Purpose-built responses.</>}
-        copy="A restaurant operations system and a transport business website, both currently in development. Explore what we are building and the work each needs to support."
-        aside={<p>These engagements are in development. Production outcomes will be added when they can be verified.</p>}
+        eyebrow="Selected client work"
+        title={<>Client software and business website projects.</>}
+        copy="Explore two active client engagements built by Gamoventure: a local-first restaurant point-of-sale and kitchen system in Ulhasnagar, and a seven-page transport business website in Bhiwandi, Maharashtra."
+        aside={
+          <div>
+            <p>Both engagements are currently in development. Production outcomes will be published only after live verification.</p>
+            <p className="hero-updated">Last updated {siteLastUpdatedDisplay}</p>
+          </div>
+        }
       />
       <section className="chapter work-index-chapter">
         <div className="page-shell">
           <Link className="work-index-card reveal-block" href="/work/egg-express-pos">
-            <div className="work-index-image" data-visual-frame><Image src="/images/egg-express/outlet.webp" alt="Egg Express food outlet" fill sizes="(max-width: 900px) 100vw, 52vw" /></div>
+            <div className="work-index-image" data-visual-frame><Image src="/images/egg-express/outlet.webp" alt="Egg Express food outlet in Ulhasnagar, Maharashtra" fill sizes="(max-width: 900px) 100vw, 52vw" /></div>
             <div className="work-index-info">
               <p className="status-line"><span /> Active client engagement · Currently in development</p>
               <h2>Egg Express POS</h2>
@@ -43,11 +52,12 @@ export default function WorkPage() {
               <p>The current build presents services, fleet information, safety and technology, and regional coverage. An enquiry form helps visitors prepare their transport requirements.</p>
               <p>Page content and launch details remain under review. The enquiry flow currently prepares a copyable draft; it does not send enquiries.</p>
               <ul><li>Seven-page business website</li><li>Fleet gallery and coverage map</li><li>Transport enquiry preparation</li></ul>
+              <p className="work-secondary-link"><Link href="/services/business-websites">Explore our business website packages</Link></p>
             </div>
           </article>
         </div>
       </section>
-      <ContactCTA eyebrow="Facing a similar operational challenge?" title="Let’s turn the bottleneck into a system that works." />
+      <ContactCTA eyebrow="Facing a similar operational challenge?" title="Let's turn the bottleneck into a system that works." />
     </SitePage>
   );
 }

@@ -66,11 +66,21 @@ for (const path of paths) {
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /^https:\/\//);
     await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
     await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute("content", /^https:\/\//);
+    const title = await page.title();
+    expect(title.length).toBeGreaterThan(15);
+    expect(title.length).toBeLessThanOrEqual(60);
+    const description = await page.locator('meta[name="description"]').getAttribute("content");
+    expect(description?.length ?? 0).toBeGreaterThanOrEqual(120);
+    expect(description?.length ?? 0).toBeLessThanOrEqual(160);
+    const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+      scripts.map((script) => JSON.parse(script.textContent || "{}")),
+    );
+    expect(schemas.length).toBeGreaterThanOrEqual(2);
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
   });
 }
 
-test("robots and sitemap describe the public pages", async ({ request }) => {
+test("robots, sitemap, redirects, 404 recovery, and AI discovery files work", async ({ page, request }) => {
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
   expect(await robots.text()).toContain("Sitemap:");
@@ -79,6 +89,27 @@ test("robots and sitemap describe the public pages", async ({ request }) => {
   const body = await sitemap.text();
   const locations = [...body.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
   for (const path of paths) expect(locations).toContain(path);
+  expect([...body.matchAll(/<lastmod>(.*?)<\/lastmod>/g)].length).toBe(paths.length);
+
+  const servicesRedirect = await request.get("/services", { maxRedirects: 0 });
+  expect(servicesRedirect.status()).toBe(308);
+  expect(servicesRedirect.headers()["location"]).toBe("/capabilities");
+
+  for (const [file, expected] of [
+    ["/llms.txt", "https://www.gamoventure.in/pricing.md"],
+    ["/llms-full.txt", "Egg Express POS"],
+    ["/pricing.md", "₹10,000"],
+  ] as const) {
+    const response = await request.get(file);
+    expect(response.status()).toBe(200);
+    expect(response.headers()["content-type"]).toContain("charset=utf-8");
+    expect(await response.text()).toContain(expected);
+  }
+
+  const missing = await page.goto("/missing-route-check");
+  expect(missing?.status()).toBe(404);
+  await expect(page.locator("main h1")).toHaveText("Page not found.");
+  await expect(page.getByRole("navigation", { name: "Recovery links" }).locator("a")).toHaveCount(6);
 });
 
 test("colored capability cards retain readable heading contrast on hover", async ({ page }) => {

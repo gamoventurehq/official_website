@@ -13,9 +13,9 @@ npm run dev
 
 The production origin is `https://www.gamoventure.in` (the bare domain currently redirects there). Set `NEXT_PUBLIC_SITE_URL` to that value in Vercel for Production. See `.env.example`.
 
-## Search and sharing
+## Search, sharing, and AI readiness
 
-Every public page has its own canonical URL, description, and Open Graph/Twitter preview. `/sitemap.xml` lists all 11 public routes; `/robots.txt` permits public pages and excludes the API. The organization data links to the official LinkedIn company page without claiming a legal registration, address, or review rating. Vercel Preview builds emit `noindex, nofollow` and disallow crawling; preview protection should remain enabled in Vercel.
+Every public page has its own canonical URL, description, and Open Graph/Twitter preview. `/sitemap.xml` lists all 11 public routes with `lastmod` dates; `/robots.txt` permits public pages and discovery crawlers while excluding `/api/`. Structured data includes `Organization` and `WebSite` globally, `Service` (with `Offer` entries in `INR` on `/services/business-websites`), `FAQPage`, `BreadcrumbList`, and `Article` (`SoftwareApplication` subject) on `/work/egg-express-pos`, without claiming a legal registration, street address, or review rating. Machine-readable files are served at `/llms.txt`, `/llms-full.txt`, and `/pricing.md`. `/services` redirects permanently (`308`) to `/capabilities`, and unmatched routes render `app/not-found.tsx` with recovery links. Vercel Preview builds emit `noindex, nofollow` and disallow crawling; preview protection should remain enabled in Vercel.
 
 After deployment:
 

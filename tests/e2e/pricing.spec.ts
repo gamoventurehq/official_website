@@ -17,7 +17,8 @@ test("website packages show approved scope and support keyboard contact navigati
   await expect(section).toContainText("do not guarantee rankings, traffic, enquiries or sales");
   await expect(section).not.toContainText(/starting at|GST|Buy now|Choose plan/i);
   const headings = await section.locator("h2, h3").evaluateAll((items) => items.map((item) => item.tagName));
-  expect(headings).toEqual(["H2", "H3", "H3", "H3", "H3"]);
+  expect(headings).toEqual(["H2", "H3", "H3", "H3", "H3", "H3"]);
+  await expect(section.locator("table.website-comparison-table tbody tr")).toHaveCount(10);
   const bounds = await cards.evaluateAll((items) => items.map((item) => {
     const { x, y, width, height } = item.getBoundingClientRect();
     return { x, y, width, height };
